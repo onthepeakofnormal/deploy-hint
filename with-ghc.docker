@@ -31,6 +31,9 @@ RUN mkdir -p                                                               my-pr
     cp -r /opt/ghc/7.10.3/lib/ghc-7.10.3/prett_*                           my-program/haskell-libs/ && \
     cp -r /opt/ghc/7.10.3/lib/ghc-7.10.3/integ_*                           my-program/haskell-libs/ && \
 
+    ls /opt/ghc/7.10.3/lib && \
+    ls /opt/ghc/7.10.3/lib/ghc-7.10.3/ && \
+
     cp -r /opt/ghc/7.10.3/lib/ghc-7.10.3/binpa_*                           my-program/haskell-libs/ && \
     cp -r /opt/ghc/7.10.3/lib/ghc-7.10.3/direc_*                           my-program/haskell-libs/ && \
     cp -r /opt/ghc/7.10.3/lib/ghc-7.10.3/filep_*                           my-program/haskell-libs/ && \
@@ -40,6 +43,9 @@ RUN mkdir -p                                                               my-pr
     cp -r /opt/ghc/7.10.3/lib/ghc-7.10.3/proce_*                           my-program/haskell-libs/ && \
     cp -r /opt/ghc/7.10.3/lib/ghc-7.10.3/termi_*                           my-program/haskell-libs/ && \
 
+    cp -r .cabal-sandbox/lib/x86_64-linux-ghc-7.10.3/tagged-*              my-program/haskell-libs/ && \
+    cp -r .cabal-sandbox/lib/x86_64-linux-ghc-7.10.3/unordered-containers-* my-program/haskell-libs/ && \
+    cp -r .cabal-sandbox/lib/x86_64-linux-ghc-7.10.3/hashable-*            my-program/haskell-libs/ && \
     cp -r .cabal-sandbox/lib/x86_64-linux-ghc-7.10.3/vector-*              my-program/haskell-libs/ && \
     cp -r .cabal-sandbox/lib/x86_64-linux-ghc-7.10.3/mwc-random-*          my-program/haskell-libs/ && \
     cp -r .cabal-sandbox/lib/x86_64-linux-ghc-7.10.3/bifunctors-*          my-program/haskell-libs/ && \
@@ -98,7 +104,9 @@ RUN mkdir -p                                                               my-pr
     cp -r /opt/ghc/7.10.3/lib/ghc-7.10.3/package.conf.d/terminfo-*.conf \
                                                                           my-program/haskell-libs/package.conf.d/ && \
 
-
+    cp -r .cabal-sandbox/*-packages.conf.d/hashable-*.conf     		         my-program/haskell-libs/package.conf.d/ && \
+    cp -r .cabal-sandbox/*-packages.conf.d/tagged-*.conf     		           my-program/haskell-libs/package.conf.d/ && \
+    cp -r .cabal-sandbox/*-packages.conf.d/unordered-containers-*.conf     my-program/haskell-libs/package.conf.d/ && \
     cp -r .cabal-sandbox/*-packages.conf.d/vector-*.conf     		           my-program/haskell-libs/package.conf.d/ && \
     cp -r .cabal-sandbox/*-packages.conf.d/mwc-random-*.conf     		       my-program/haskell-libs/package.conf.d/ && \
     cp -r .cabal-sandbox/*-packages.conf.d/bifunctors-*.conf     		       my-program/haskell-libs/package.conf.d/ && \
@@ -159,6 +167,13 @@ RUN mkdir -p                                                               my-pr
                                                                           my-program/haskell-libs/package.conf.d/process-*.conf && \
    sed -i 's/\/opt\/ghc\/7.10.3\/lib\/ghc-7.10.3/\/root\/my-program\/haskell-libs/g' \
                                                                           my-program/haskell-libs/package.conf.d/terminfo-*.conf && \
+
+   sed -i 's/\/root\/.cabal-sandbox\/lib\/x86_64-linux-ghc-7.10.3/\/root\/my-program\/haskell-libs/g' \
+                                                                         my-program/haskell-libs/package.conf.d/hashable-*.conf && \
+   sed -i 's/\/root\/.cabal-sandbox\/lib\/x86_64-linux-ghc-7.10.3/\/root\/my-program\/haskell-libs/g' \
+                                                                      my-program/haskell-libs/package.conf.d/tagged-*.conf && \
+   sed -i 's/\/root\/.cabal-sandbox\/lib\/x86_64-linux-ghc-7.10.3/\/root\/my-program\/haskell-libs/g' \
+                                                                       my-program/haskell-libs/package.conf.d/unordered-containers-*.conf && \
 
     sed -i 's/\/root\/.cabal-sandbox\/lib\/x86_64-linux-ghc-7.10.3/\/root\/my-program\/haskell-libs/g' \
                                                                        my-program/haskell-libs/package.conf.d/vector-*.conf && \

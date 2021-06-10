@@ -12,7 +12,19 @@ interpretDiag u = do
 
 interpretId :: () -> Interpreter ()
 interpretId u = do
-    setImports ["Prelude"]
+    setImports
+      [ "Prelude"
+      , "Data.ByteString"
+      , "Data.Graph"
+      , "Control.DeepSeq"
+      , "GHC.Magic"
+      , "Numeric.Natural"
+      , "Data.Hashable"
+      , "Data.Tagged"
+      , "Data.Text"
+      , "Data.HashSet"
+      , "Data.Semigroup"
+      ]
     f <- interpret "id" (as :: () -> ())
     return (f u)
 
